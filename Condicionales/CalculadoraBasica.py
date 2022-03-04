@@ -1,9 +1,11 @@
+# Dandole valores a las variables a utilizar en el futuro
 def leer_valores():
     num1 = float(input("Digite al valor 1: "))
     num2 = float(input("Digite al valor 2: "))
 
     return num1, num2
 
+# Bloque de funciones que realizan las principales operaciones de una calculadora
 def funcion_suma(valor1, valor2):
     resul_sum = valor1 + valor2
 
@@ -24,6 +26,7 @@ def funcion_div(valor1, valor2):
 
     return result_div
 
+# Dandolo el resultado de su operacion al usuario
 def output(result, operacion):
     print(f"El resultado de la operacion ({operacion}) es: {result}")
 
