@@ -3,12 +3,12 @@ La funcion len() nos permite identificar el numero de caracteres que posee un st
 retorna longitud
 '''
 
-from gettext import find
+#from gettext import find
 
 
 nombre = "Nora"
 
-len(nombre)
+print(len(nombre))
 
 '''
 Se puede ver mejor su funcionamiento en el IDLE de python, que ya viene
