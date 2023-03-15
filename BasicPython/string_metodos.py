@@ -3,6 +3,6 @@
 ANIMAL = 'IGUaNA roja '
 print(ANIMAL.upper())
 print(ANIMAL.lower())
-print(ANIMAL.capitalize())
+print(ANIMAL.strip().capitalize())
 print(ANIMAL.title())
 print(ANIMAL.strip())
