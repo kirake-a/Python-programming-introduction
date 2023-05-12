@@ -1,5 +1,5 @@
 """System module."""
-from Arbol_Binario_Busqueda.Nodo import Node
+from Nodo import Node
 
 class ABB:
     """Arbol binario de busqueda"""
@@ -15,7 +15,7 @@ class ABB:
     def insert_node(self, label) -> None:
         """Inserta un nuevo nodo al ABB"""
 
-        if self.root is None:
+        if self.is_empty():
             self.root = Node(label, None)
         else:
             self.insert_aux(self.root, label)
@@ -26,14 +26,22 @@ class ABB:
         de un ABB"""
         if label < current.get_data():
             if current.get_left() is None:
-                current = current.get_left()
-                current = Node(label, None)
+                parent = current
+                new_node = Node(label, None)
+                current.set_left(new_node)
+
+                left = current
+                left.set_parent(parent)
             else:
                 self.insert_aux(current.get_left(), label)
         else:
             if current.get_right() is None:
-                current = current.get_right()
-                current = Node(label, None)
+                parent = current
+                new_node = Node(label, None)
+                current.set_right(new_node)
+
+                right = current
+                right.set_parent(parent)
             else:
                 self.insert_aux(current.get_right(), label)
 
@@ -43,26 +51,23 @@ class ABB:
             return True
         return False
 
-
-    def in_order(self, root_aux):
+    def pre_order(self, root_aux: Node):
         """Recorrido del arbol en orden"""
         if root_aux is not None:
-            self.in_order(root_aux.get_left())
-            print(root_aux.get_data(), end=", ")
-            self.in_order(root_aux.get_right())
+            print(root_aux.__repr__(), end=", ") # R
+            self.in_order(root_aux.get_left()) #
+            self.in_order(root_aux.get_right()) #
 
-tree = ABB()
-ARRAY_DATA = [8, 3, 10, 1, 6, 14, 4, 7, 13]
-
-tree.insert_node(8)
-tree.insert_node(3)
-tree.insert_node(10)
-tree.insert_node(1)
-tree.insert_node(6)
-tree.insert_node(14)
-tree.insert_node(4)
-tree.insert_node(7)
-tree.insert_node(13)
-print(tree.root)
-
-#tree.in_order(tree)
+    def in_order(self, root_aux: Node):
+        """Recorrido del arbol en orden"""
+        if root_aux is not None:
+            self.in_order(root_aux.get_left()) #
+            print(root_aux.__repr__(), end=", ") # R
+            self.in_order(root_aux.get_right()) #
+    
+    def post_order(self, root_aux: Node):
+        """Recorrido del arbol en orden"""
+        if root_aux is not None:
+            self.in_order(root_aux.get_left()) #
+            self.in_order(root_aux.get_right()) # 
+            print(root_aux.__repr__(), end=", ") # R
